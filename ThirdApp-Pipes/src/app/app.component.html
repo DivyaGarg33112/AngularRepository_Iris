@@ -1,0 +1,55 @@
+<h3>App Component</h3>
+
+<hr/>
+Percent Pipe :  
+<div>
+  <!--output '26%'-->
+  <p>A: {{a | percent}}</p>
+
+  <!--output '0,134.950%'-->
+  <p>B: {{b | percent:'4.3-5'}}</p>
+  <!--Can refer https://angular.io/api/common/PercentPipe-->
+</div>
+<br/>
+
+<h3>Employees List</h3>
+Table to be Filtered : <input type="text" [(ngModel)]="toBeFiltered"> 
+<table  class="table-bordered">
+  <tr>
+    <td>Employee Code</td>
+    <td>Employee Name</td>
+    <td>Gender</td>
+    <td>Salary</td>
+    <td>Date Of Joining</td>
+  </tr>
+  <tr *ngFor="let employee of employees|filter:toBeFiltered:'employeeName'">
+    <td>{{employee.employeeId}}</td>
+    
+    <!-- <td>{{employee.employeeName}}</td> -->
+    <!-- <td>{{employee.employeeName|uppercase}}</td> -->
+    <!-- <td>{{employee.employeeName|lowercase}}</td> -->
+     <!-- <td>{{employee.employeeName|lowercase}}</td>-->
+    <td>{{employee.employeeName|genderPipe:employee.gender}}</td>  
+    <!-- <td>{{employee.employeeName|slice:2}}</td>-->
+    <!-- <td>{{employee.employeeName|slice:2:4}}</td> -->
+
+    <td>{{employee.gender}}</td>
+    
+    <!-- <td>{{employee.salary}}</td> -->
+    <!-- <td>{{employee.salary|currency}}</td> -->
+     <td>{{employee.salary|currency:'INR' }}</td> 
+    <!--Can refer https://angular.io/api/common/CurrencyPipe-->
+
+    <!-- <td>{{employee.doj}}</td> -->
+    <!-- <td>{{employee.doj|date}}</td> -->
+    <!-- <td>{{employee.doj|date:"short"}}</td> -->
+    <!-- <td>{{employee.doj|date:"shortDate"}}</td> -->
+    <!-- <td>{{employee.doj|date:"long"}}</td> -->
+    <!-- <td>{{employee.doj|date:"longDate"}}</td> -->
+    <!-- <td>{{employee.doj|date:"full"}}</td> -->
+    <!-- <td>{{employee.doj|date:"fullDate"}}</td> -->
+    <!-- <td>{{employee.doj|date:"shortTime"}}</td> -->
+    <!-- <td>{{employee.doj|date:"mediumTime"}}</td> -->
+    <td>{{employee.doj|date:"dd/MM/yyyy"}}</td>
+  </tr>
+</table>
